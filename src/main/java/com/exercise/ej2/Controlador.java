@@ -12,26 +12,39 @@ public class Controlador {
     IPersona personaService;
 
     @GetMapping
-    public List<PersonaDTO> getLista()
+    public List<PersonaOutputDTO> getLista()
     {
         return personaService.getAllPersona();
     }
 
     @GetMapping("/persona/{id}")
-    public PersonaDTO getById(@PathVariable Integer id) throws Exception
+    public PersonaOutputDTO getById(@PathVariable Integer id) throws Exception
     {
         return personaService.getPersonaById(id);
     }
 
     @GetMapping("/usuario/{usuario}")
-    public List<PersonaDTO> getByNombre(@PathVariable String usuario) throws Exception
+    public List<PersonaOutputDTO> getByNombre(@PathVariable String usuario) throws Exception
     {
         return personaService.getPersonaByUsuario(usuario);
     }
 
-    @PostMapping("/")
-    public PersonaDTO addPersona(@RequestBody Persona persona)
+    @PostMapping("/persona")
+    public PersonaOutputDTO addPersona(@RequestBody PersonaInputDTO personaInputDTO)
     {
-        return personaService.addPersona(persona);
+        return personaService.addPersona(personaInputDTO);
     }
+
+    @PutMapping("/persona")
+    public PersonaOutputDTO setPersona(@RequestBody PersonaInputDTO personaInputDTO) throws Exception
+    {
+        return personaService.setPersona(personaInputDTO);
+    }
+
+    @DeleteMapping("/persona/{id}")
+    public PersonaOutputDTO delById(@PathVariable Integer id) throws Exception
+    {
+        return personaService.delPersona(id);
+    }
+
 }

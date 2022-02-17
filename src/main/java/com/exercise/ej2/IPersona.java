@@ -3,8 +3,10 @@ package com.exercise.ej2;
 import java.util.List;
 
 public interface IPersona {
-    List<PersonaDTO> getAllPersona();
-    List<PersonaDTO> getPersonaByUsuario(String usuario);
-    PersonaDTO getPersonaById(Integer id) throws Exception;
-    PersonaDTO addPersona(Persona persona);
+    List<PersonaOutputDTO> getAllPersona();
+    List<PersonaOutputDTO> getPersonaByUsuario(String usuario);
+    PersonaOutputDTO getPersonaById(Integer id) throws Exception;
+    PersonaOutputDTO addPersona(PersonaInputDTO personaInputDTO);
+    PersonaOutputDTO setPersona(PersonaInputDTO personaInputDTO) throws Exception;
+    PersonaOutputDTO delPersona(Integer id) throws Exception;
 }

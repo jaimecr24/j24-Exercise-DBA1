@@ -5,10 +5,10 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class PersonaDTO {
+public class PersonaInputDTO {
     private Integer id;
     String usuario;
-    //String password;
+    String password;
     String name;
     String surname;
     String company_email;
