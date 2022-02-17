@@ -30,7 +30,7 @@ public class Controlador {
     }
 
     @PostMapping("/persona")
-    public PersonaOutputDTO addPersona(@RequestBody PersonaInputDTO personaInputDTO)
+    public PersonaOutputDTO addPersona(@RequestBody PersonaInputDTO personaInputDTO) throws Exception
     {
         return personaService.addPersona(personaInputDTO);
     }

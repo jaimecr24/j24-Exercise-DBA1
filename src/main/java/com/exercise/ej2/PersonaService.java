@@ -38,7 +38,8 @@ public class PersonaService implements IPersona{
     }
 
     @Override
-    public PersonaOutputDTO addPersona(PersonaInputDTO personaInputDTO) {
+    public PersonaOutputDTO addPersona(PersonaInputDTO personaInputDTO) throws Exception {
+        this.validar(personaInputDTO);
         Persona persona = this.toPersona(personaInputDTO);
         persona.setId(null);
         Persona persona1 = personaRepo.save(persona);
@@ -47,6 +48,7 @@ public class PersonaService implements IPersona{
 
     @Override
     public PersonaOutputDTO setPersona(PersonaInputDTO personaInputDTO) throws Exception{
+        this.validar(personaInputDTO);
         Persona persona = personaRepo.findById(personaInputDTO.getId()).orElseThrow(()->new Exception("id "+personaInputDTO.getId()+" not found."));
         persona.setPassword(personaInputDTO.getPassword());
         persona.setUsuario(personaInputDTO.getUsuario());
@@ -104,5 +106,17 @@ public class PersonaService implements IPersona{
         persona.setImagen_url(personaInputDTO.getImagen_url());
         persona.setTermination_date(personaInputDTO.getTermination_date());
         return persona;
+    }
+
+    private void validar(PersonaInputDTO personaInputDTO) throws Exception{
+        String usuario = personaInputDTO.getUsuario();
+        if (usuario==null) throw new Exception("Error: user is null.");
+        if (usuario.length()<6 || usuario.length()>10) throw new Exception("Error: user length must be between 6 and 10 characters");
+        if (personaInputDTO.getPassword()==null) throw new Exception("Error: password is null.");
+        if (personaInputDTO.getName()==null) throw new Exception("Error: name is null.");
+        if (personaInputDTO.getCompany_email()==null) throw new Exception("Error: Company_email is null.");
+        if (personaInputDTO.getPersonal_email()==null) throw new Exception("Error: Personal_email is null.");
+        if (personaInputDTO.getCity()==null) throw new Exception("Error: City is null.");
+        if (personaInputDTO.getCreated_date()==null) throw new Exception("Error: Created_date is null");
     }
 }
