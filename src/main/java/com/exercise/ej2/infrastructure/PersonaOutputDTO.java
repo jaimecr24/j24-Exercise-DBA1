@@ -1,28 +1,27 @@
-package com.exercise.ej2;
+package com.exercise.ej2.infrastructure;
 
 import java.util.Date;
 
-public record PersonaInputDTO(
-        Integer id,
+public record PersonaOutputDTO(
+        String id_persona,
         String usuario,
-        String password,
+        //String password,
         String name,
         String surname,
         String company_email,
         String personal_email,
         String city,
-        boolean active,
+        Boolean active,
         Date created_date,
         String imagen_url,
         Date termination_date
-        ){}
-
+){}
 /*
 @Data
-public class PersonaInputDTO {
+public class PersonaOutputDTO {
     private Integer id;
     String usuario;
-    String password;
+    //String password;
     String name;
     String surname;
     String company_email;
