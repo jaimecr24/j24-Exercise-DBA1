@@ -28,7 +28,7 @@ public class Persona {
 
     @Size(min=6,max=10)
     @NotBlank(message = "usuario es nulo")
-    private String usuario;
+    private String user;
 
     @NotBlank(message = "password es nulo")
     private String password;

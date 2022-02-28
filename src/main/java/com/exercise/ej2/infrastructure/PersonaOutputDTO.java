@@ -4,7 +4,7 @@ import java.util.Date;
 
 public record PersonaOutputDTO(
         String id_persona,
-        String usuario,
+        String user,
         //String password,
         String name,
         String surname,

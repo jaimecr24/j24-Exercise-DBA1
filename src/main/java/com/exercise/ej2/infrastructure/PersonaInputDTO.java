@@ -5,7 +5,7 @@ import com.exercise.ej2.domain.Persona;
 import java.util.Date;
 
 public record PersonaInputDTO(
-        String usuario,
+        String user,
         String password,
         String name,
         String surname,
@@ -20,7 +20,7 @@ public record PersonaInputDTO(
     public static Persona toPersona(PersonaInputDTO personaInputDTO){
         Persona persona = new Persona();
         persona.setPassword(personaInputDTO.password());
-        persona.setUsuario(personaInputDTO.usuario());
+        persona.setUser(personaInputDTO.user());
         persona.setName(personaInputDTO.name());
         persona.setSurname(personaInputDTO.surname());
         persona.setCompany_email(personaInputDTO.company_email());
